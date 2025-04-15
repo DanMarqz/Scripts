@@ -7,9 +7,10 @@ git status
 Write-Output ""
 
 # Solicitar los inputs al usuario
+$actual_branch = git branch --show-current
 $commit_file = Read-Host "  ~~~~>_  Por favor, indique los archivos a agregar al commit (. para todos)"
 $commit_message = Read-Host "  ~~~~>_  Por favor, indique un mensaje para el commit"
-$commit_branch = Read-Host "  ~~~~>_  Por favor, indique la rama donde se enviará su commit: $(git branch --show-current)"
+$commit_branch = Read-Host "  ~~~~>_  Por favor, indique la rama donde se enviará su commit $actual_branch"
 
 # Construir los comandos
 $add_files = "git add $commit_file"
@@ -30,6 +31,6 @@ Invoke-Expression $add_message
 Write-Output ""
 
 Write-Host "  ~~~~>_  Enviando commit...  " -ForegroundColor Cyan
-Write-Host "$send_push $commit_branch" -ForegroundColor Cyan
+Write-Host "$send_push $actual_branch" -ForegroundColor Cyan
 Invoke-Expression $send_push
 Write-Output ""
