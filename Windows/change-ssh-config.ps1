@@ -23,10 +23,12 @@ $selected_config = Read-Host "  ~~~~>_  Por favor, seleccione la configuracion d
 if ($selected_config -eq 1) {
     Write-Host "  ~~~~>_  Copiando archivo config-work a config...  " -ForegroundColor Magenta
     Copy-Item -Path "config-work" -Destination "config"
+    git config --global user.email "daniel.marquez@globalr.net"
     Write-Host ""
 } elseif ($selected_config -eq 2) {
     Write-Host "  ~~~~>_  Copiando archivo config-personal a config...  " -ForegroundColor Magenta
     Copy-Item -Path "config-personal" -Destination "config"
+    git config --global user.email "danielarturo.marquez@gmail.com"
     Write-Host ""
 } else {
     Write-Host "  ~~~~>_  Opcion no valida. Por favor, seleccione config-work o config-personal" -ForegroundColor Red
